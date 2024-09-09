@@ -1,0 +1,23 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <title>David`s blog</title>
+</head>
+<body>
+<header>
+    <h1><a href="/">David`s blog</a></h1>
+</header>
+
+    {% for post in posts %}
+        {% if post != None %}
+        <article>
+            <h2><a href="admin/blog/post/{{ post.id }}">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+            <time>published: {{ post.published_time }}</time>
+        </article>
+        {% endif %}
+    {% endfor %}
+
+</body>
+</html>
