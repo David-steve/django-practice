@@ -72,9 +72,11 @@ h4 {
     color: #C25100;
     background: none;
     border-color: #C25100;
+    float: right;
 }
 
 .btn-secondary:hover {
     color: #FFFFFF;
     background-color: #C25100;
 }
+
