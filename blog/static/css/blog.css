@@ -80,3 +80,13 @@ h4 {
     background-color: #C25100;
 }
 
+input[type="text"] {
+    width: 750px;
+    height: 15px;
+}
+
+textarea#id_text {
+    width: 1200px;
+}
+
+

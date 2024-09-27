@@ -1,0 +1,16 @@
+.points {
+    /* 弹性盒子 */
+    display: flex;
+    width: 90vw;
+}
+
+body {
+    font-family: 'Muli', sans-serif;
+    color: black;
+    /*display: flex;*/
+    /*height: 100vh;*/
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /*margin: 0;*/
+}
