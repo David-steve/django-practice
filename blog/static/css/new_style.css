@@ -1,16 +1,72 @@
-.points {
-    /* 弹性盒子 */
-    display: flex;
-    width: 90vw;
+/* 基础样式 */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4; /* 浅灰色背景 */
+    margin: 0;
+    padding: 0;
 }
 
-body {
-    font-family: 'Muli', sans-serif;
-    color: black;
-    /*display: flex;*/
-    /*height: 100vh;*/
-    align-items: center;
-    justify-content: center;
+h1 {
+    /* 居中对齐 */
+    text-align: center;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
     overflow: hidden;
-    /*margin: 0;*/
+    padding: 20px;
+}
+
+/* 表单样式 */
+.form-group {
+    margin-bottom: 15px;
+    width: 500px;
+}
+
+input[type="text"] {
+    width: calc(100% - 22px); /* 减去边框宽度 */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-sizing: border-box; /* 包含内边距和边框在宽度和高度之内 */
+}
+
+button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* 数据列表样式 */
+.data-list {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+}
+
+.key-value-pair {
+    margin-bottom: 3px;
+}
+
+.key {
+    font-weight: bold;
+    color: brown;
+}
+
+.value {
+    color: green;
+}
+
+pre {
+    font-size: 18px;
 }
