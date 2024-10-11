@@ -1,5 +1,6 @@
 import json
 
+from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
 # Create your views here.
@@ -79,7 +80,7 @@ def golden_point(request):
 
         result = json.dumps(dict(zip(base_points, collect)), indent=4)
 
-        return render(request, 'blog/golden_point.html', {'points': result})
+        return HttpResponse(result)
         pass
     else:
         return render(request, 'blog/golden_point.html')
