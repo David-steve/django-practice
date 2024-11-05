@@ -8,6 +8,7 @@ from django.utils import timezone
 
 from blog.forms import PostForm
 from blog.models import Post
+from mixed.utils import get_current_date, date_format
 
 
 def post_list(request):
@@ -84,3 +85,14 @@ def golden_point(request):
         pass
     else:
         return render(request, 'blog/golden_point.html')
+
+
+def v2ray_nodes(request):
+    today = get_current_date()
+    year_month = date_format(today, output_format='%Y/%m')
+    today_after = date_format(today, output_format='%Y%m%d')
+
+    url = f"https://www.freeclashnode.com/uploads/{year_month}/4-{today_after}.txt"
+
+    # 重定向
+    return redirect(url)
