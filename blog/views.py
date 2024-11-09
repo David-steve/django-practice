@@ -1,5 +1,7 @@
 import json
 
+import requests
+import yaml
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -87,12 +89,44 @@ def golden_point(request):
         return render(request, 'blog/golden_point.html')
 
 
-def v2ray_nodes(request):
+def get_free_nodes_url(node_type):
+    types = {'v2ray': '.txt', 'clash': '.yaml'}
+
     today = get_current_date()
     year_month = date_format(today, output_format='%Y/%m')
     today_after = date_format(today, output_format='%Y%m%d')
 
-    url = f"https://www.freeclashnode.com/uploads/{year_month}/4-{today_after}.txt"
+    node_type = types.get(node_type)
+
+    url = f"https://www.freeclashnode.com/uploads/{year_month}/4-{today_after}{node_type}"
+    return url
+
+
+def v2ray_nodes(request):
+    url = get_free_nodes_url('v2ray')
 
     # 重定向
     return redirect(url)
+
+
+def clash_nodes(request):
+    headers = {
+        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML}, like Gecko)"
+    }
+    url = get_free_nodes_url('clash')
+
+    response = requests.get(url, headers=headers)
+
+    # 解析yaml
+    ret = dict()
+    try:
+        ret = yaml.load(response.text, Loader=yaml.FullLoader)
+    except Exception as e:
+        print(e)
+
+    # 去掉 'proxy-groups' 跟 'rules
+    ret.pop('proxy-groups')
+    ret.pop('rules')
+
+    # 重定向
+    return HttpResponse(yaml.dump(ret))

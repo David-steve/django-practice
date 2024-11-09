@@ -9,4 +9,5 @@ urlpatterns = [
     path('post/<int:pk>/edit', views.post_edit, name='post_edit'),
     path('golden_point/', views.golden_point, name='golden_point'),
     path('v2ray_nodes/', views.v2ray_nodes, name='v2ray_nodes'),
+    path('clash_nodes/', views.clash_nodes, name='v2ray_nodes'),
 ]
