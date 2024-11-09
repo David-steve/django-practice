@@ -1,7 +1,5 @@
 import json
 
-import requests
-import yaml
 from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 
@@ -110,23 +108,7 @@ def v2ray_nodes(request):
 
 
 def clash_nodes(request):
-    headers = {
-        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML}, like Gecko)"
-    }
     url = get_free_nodes_url('clash')
 
-    response = requests.get(url, headers=headers)
-
-    # 解析yaml
-    ret = dict()
-    try:
-        ret = yaml.load(response.text, Loader=yaml.FullLoader)
-    except Exception as e:
-        print(e)
-
-    # 去掉 'proxy-groups' 跟 'rules
-    ret.pop('proxy-groups')
-    ret.pop('rules')
-
     # 重定向
-    return HttpResponse(yaml.dump(ret))
+    return redirect(url)
