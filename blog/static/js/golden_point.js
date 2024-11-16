@@ -1,13 +1,23 @@
 let form = document.querySelector('form')
 let data_container = document.querySelector('.data-list')
-let input = document.querySelector('input[name="num1"]')
 let inputs = document.querySelectorAll('input')
 
-// 网页加载后, 自动聚焦到输入框
-inputs.forEach(input => {
-    if (input.name === "num1") input.focus()
-})
 
+function auto_focus() {
+    // 网页加载后, 自动聚焦到输入框
+    inputs.forEach(input => {
+        if (input.name === "num1") input.focus()
+    })
+}
+
+
+function clearInputs() {
+    inputs.forEach(input => {
+        if (input.name.indexOf('num') !== -1) {
+            input.value = ''
+        }
+    })
+}
 
 function dataSubmit() {
     let data = new FormData(this)
@@ -46,16 +56,10 @@ function dataSubmit() {
             console.log(error)
         })
 
-    inputs.forEach(input => {
-        if (input.name === "num1")
-            input.focus()
-
-        // 清空输入框的输入内容
-        if (input.name.indexOf('num') !== -1){
-            input.value = ''
-        }
-    })
+    auto_focus()
+    clearInputs()
     return false;
 }
 
 form.addEventListener('submit', dataSubmit)
+auto_focus()

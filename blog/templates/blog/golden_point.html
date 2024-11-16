@@ -1,34 +1,43 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>GoldenPoint</title>
-    <link rel="stylesheet" type="text/css" href="/static/css/new_style.css">
+    <link type="text/css" rel="stylesheet" href="{% static 'css/new_style.css' %}">
 </head>
 
 <body>
-<h1>斐波那契回撤水平线</h1>
-<div class="container">
-    <form class="form-group" method="post" action="#" onsubmit="return false">
-        {% csrf_token %}
-        <label>
-            价格点1:
-            <input data-auto-clear-button type="number" step="0.01" name="num1">
-            <br/>
-        </label>
-        <label>
-            价格点2:
-            <input data-auto-clear-button type="number" step="0.01" name="num2">
-            <br/>
-        </label>
-        <input type="submit">
-    </form>
+<div class="wrapper">
+    <h1>斐波那契回撤水平线</h1>
 
-    <div class="data-list">
+    <div class="container">
+        <form class="form-group" method="post" action="#" onsubmit="return false">
+            {% csrf_token %}
+            <label>
+                价格点1:
+                <input data-auto-clear-button type="number" step="0.01" name="num1">
+                <br/>
+            </label>
+            <label>
+                价格点2:
+                <input data-auto-clear-button type="number" step="0.01" name="num2">
+                <br/>
+            </label>
+            <br/>
+            <div>
+                <input type="submit">
+                <input type="reset" value="重置" id="data-clear">
+            </div>
+        </form>
+
+        <div class="data-list">
+        </div>
     </div>
 </div>
 
-<script type="javascript" src="/static/js/golden_point.js"></script>
+<script src="{% static 'js/golden_point.js' %}"></script>
 
 </body>
 </html>
