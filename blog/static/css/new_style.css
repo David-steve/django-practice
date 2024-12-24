@@ -12,7 +12,7 @@ h1 {
 }
 
 .container {
-    max-width: 1200px;
+    width: 100%;
     margin: auto;
     overflow: hidden;
     padding: 20px;
@@ -20,12 +20,16 @@ h1 {
 
 /* 表单样式 */
 .form-group {
-    /*margin-bottom: 15px;*/
-    width: 500px;
-    margin: auto;
+    width: 100%;
+    display: flex; /* 使用flex布局 */
+    flex-direction: column; /* 子元素垂直排列 */
+    align-items: center; /* 水平居中 */
+    justify-content: center; /* 垂直居中 */
 }
 
-.form-group > div {
+.form-group div {
+    width: 100%; /* 子元素宽度占满容器 */
+    text-align: center; /* 文字水平居中 */
 }
 
 input[type="text"] {
@@ -54,6 +58,8 @@ button:hover {
     background-color: white;
     padding: 20px;
     border-radius: 5px;
+    /*行间距*/
+    line-height: 1.5;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     /*margin-top: 30px;*/
     width: 500px;
